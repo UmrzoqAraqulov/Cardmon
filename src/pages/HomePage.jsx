@@ -13,9 +13,6 @@ const HomePage = () => {
           <div className="calendar">
             <i className="fa-solid fa-calendar-days cursor-pointer"></i>
           </div>
-          <div className="search">
-            <i className="fa-solid fa-magnifying-glass cursor-pointer"></i>
-          </div>
         </div>
       </nav>
 
