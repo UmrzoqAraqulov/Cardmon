@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
+
+.active {
+  color: blue;
+}
+
+.debts .lend .active i {
+  background: red !important;
+}
+.debts .lend .active p,.debts .borrow .active p {
+  color: rgb(65, 64, 64) !important;
+}
+.debts .borrow .active i {
+  background: rgb(7, 197, 7) !important;
+}
+.transactions .income .active i {
+  background: rgb(7, 197, 7) !important;
+}
+.transactions .income .active p{
+  color: rgb(65, 64, 64) !important;
+}
+.transactions .expenses .active p {
+  color: rgb(65, 64, 64) !important;
+}
+.transactions .expenses .active i {
+  background: red !important;
+
+}
+
+

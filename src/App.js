@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HomePage, Menu} from './pages'
+import Layout from './components/Layout'
+import DebtsBorrow from './components/DebtsBorrow'
+import DebtsLend from './components/DebtsLend'
+import TransactionsIncome from './components/TransactionsIncome'
+import TransactionsExpenses from './components/TransactionsExpenses'
+import HomeIncome from "./components/HomeIncome";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path='income' element={<HomeIncome />} />
+          <Route path="transactions/income" element={<TransactionsIncome />} />
+          <Route path="transactions/expenses" element={<TransactionsExpenses />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="debts/lend" element={<DebtsLend />} />
+          <Route path="debts/borrow" element={<DebtsBorrow />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default App

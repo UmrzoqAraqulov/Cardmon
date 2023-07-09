@@ -1,0 +1,36 @@
+.add{
+  display: none;
+}
+.show{
+  display: block;
+}
+
+.cards::-webkit-scrollbar{
+  display: none;
+}
+
+.trExpenses,.trIncome,.dbBorrow,.dbLend{
+  transform: scale(0);
+  animation-name: showIcon;
+  animation-duration: .3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showIcon {
+  0%{
+    transform: scale(0) rotate(90deg);
+  }
+  25%{
+    transform: scale(0.25) rotate(180deg);
+  }
+  50%{
+    transform: scale(0.5) rotate(270deg);
+  }
+  75%{
+    transform: scale(0.75) rotate(360deg);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
