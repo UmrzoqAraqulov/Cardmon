@@ -4,7 +4,7 @@ import "./add.scss";
 import ModalDebts from "./ModalDebts";
 import ModalTransactions from './ModalTransactions';
 
-const Footer = ({setLocalStorage}) => {
+const Footer = ({ setLocalStorage }) => {
   const [showAdd, setShowAdd] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [transactionsModalShow, setTransactionsModalShow] = useState(false);
@@ -12,10 +12,10 @@ const Footer = ({setLocalStorage}) => {
   const show = () => {
     setShowAdd(!showAdd);
   };
-  
+
   const openModalDebts = () => {
     setModalShow(!modalShow);
-    if(showAdd){
+    if (showAdd) {
       show();
     }
   };

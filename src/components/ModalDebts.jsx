@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const ModalDebts = ({ display, openModalDebts,setLocalStorage}) => {
+const ModalDebts = ({ display, openModalDebts, setLocalStorage }) => {
   const location = useLocation();
-  const selected = null;
   const dateNow = new Date();
   const todayDate = [
     dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate(),
@@ -19,18 +18,20 @@ const ModalDebts = ({ display, openModalDebts,setLocalStorage}) => {
     selectDate: todayDate.join("."),
     note: "",
   });
-  const { fullName, phone, cost, date, selectDate, note } = info;
 
- 
+  const {fullName, phone, cost, date, selectDate, note} = info; 
+
   const AddInfo = (e) => {
     e.preventDefault();
-    setLocalStorage(`${location.pathname.split('/')[2]}`,info);
+    console.log(info, location.pathname.split("/")[2]);
+    setLocalStorage(info, location.pathname.split("/")[2]);
     openModalDebts();
   };
 
   const handleChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value });
+    setInfo({ ...info, [e.target.name]: e.target.value });  
   };
+
   return (
     <div
       className={`${

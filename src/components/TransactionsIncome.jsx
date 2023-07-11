@@ -59,7 +59,7 @@ const TransactionsIncome = () => {
       </div>
 
       {totalResult()}
-      <div className="cards h-80 overflow-auto">
+      <div style={{height:"420px"}} className="cards overflow-auto">
         {arr.length === 0 ? (
           <div className="flex pt-6 items-center text-center text-gray-600 flex-col">
             <img className="w-48" src={image} alt="" />

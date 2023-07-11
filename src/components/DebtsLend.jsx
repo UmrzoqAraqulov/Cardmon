@@ -4,19 +4,27 @@ import image from "../assets/image/lend_default.jpg";
 import DebtsCard from "./DebtsCard";
 import "./add.scss";
 
-const DebtsLend = () => {
+const DebtsLend = ({setAddDebt}) => {
   const [debtsArr, setDebtsArr] = useState("");
 
+  if(setAddDebt){
+    setDebtsArr({})
+  }
   let arr = JSON.parse(localStorage.getItem("lend")) || [];
   let total = 0;
   const totalResult = () => {
     arr.map((el) => (total += +el.cost));
   };
 
+  
+
   const deleteDebt = (id) => {
-    let newArr = arr.filter((debt) => debt.id !== id);
-    localStorage.setItem("lend", JSON.stringify(newArr));
-    setDebtsArr({});
+    let requestDelete = window.confirm("Do you want to fly this debt");
+    if (requestDelete) {
+      let newArr = arr.filter((debt) => debt.id !== id);
+      localStorage.setItem("lend", JSON.stringify(newArr));
+      setDebtsArr({});
+    }
   };
 
   return (

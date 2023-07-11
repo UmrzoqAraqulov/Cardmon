@@ -1,9 +1,72 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import image from "../assets/image/expenses.jpg";
+import { Diagramma } from "./Diagramma";
 
 const HomePage = () => {
   let arr = JSON.parse(localStorage.getItem("income")) || [];
+
+  let total = 0;
+
+  const totalResult = () => {
+    let transactionsExpenses = JSON.parse(localStorage.getItem("expensesTotal"));
+    arr.map((el) => (total += +el.cost));
+    localStorage.setItem("incomeTotal", JSON.stringify(total));
+    total-=transactionsExpenses;
+  };
+  
+  const data = [
+    {
+      id: "Award",
+      value: arr.reduce((ac, el) => {
+        if (el.category === "Award") {
+          ac += +el.cost;
+        }
+        return ac;
+      }, 0),
+      color: "hsl(165, 70%, 50%)",
+    },
+    {
+      id: "Pension",
+      value: arr.reduce((ac, el) => {
+        if (el.category === "Pension") {
+          ac += +el.cost;
+        }
+        return ac;
+      }, 0),
+      color: "hsl(84, 70%, 50%)",
+    },
+    {
+      id: "Salary",
+      value: arr.reduce((ac, el) => {
+        if (el.category === "Salary") {
+          ac += +el.cost;
+        }
+        return ac;
+      }, 0),
+      color: "hsl(270, 70%, 50%)",
+    },
+    {
+      id: "Scholarsh",
+      value: arr.reduce((ac, el) => {
+        if (el.category === "Scholarsh") {
+          ac += +el.cost;
+        }
+        return ac;
+      }, 0),
+      color: "hsl(202, 70%, 50%)",
+    },
+    {
+      id: "Other",
+      value: arr.reduce((ac, el) => {
+        if (el.category === "Other") {
+          ac += +el.cost;
+        }
+        return ac;
+      }, 0),
+      color: "hsl(316, 70%, 50%)",
+    },
+  ];
 
   return (
     <div className="transactions">
@@ -34,14 +97,21 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div>
+      {totalResult()}
+
+      <div className="flex bg-blue-600 w-44 mx-auto mt-1 py-1 justify-center rounded-b-xl rounded-t-md gap-2 text-white font-medium">
+        <i class="fa-solid fa-dollar-sign border-2 border-white py-0.5 px-1.5 rounded-full"></i>
+        <p>BALANCE: {total}</p>
+      </div>
+
+      <div className="h-96">
         {arr.length === 0 ? (
           <div className="flex pt-6 items-center text-center text-gray-600 flex-col">
             <img className="w-48" src={image} alt="" />
             <p>No Any data for the selected period</p>
           </div>
         ) : (
-          ""
+          <Diagramma data={data} />
         )}
       </div>
     </div>

@@ -9,9 +9,13 @@ const DebtsCard = ({
   cost,
   date,
   deleteDebt,
+  editDataDebt,
 }) => {
   return (
-    <div className="relative flex w-11/12 items-center justify-between bg-white mx-auto my-3 rounded-2xl p-4">
+    <div
+      onClick={() => editDataDebt(id)}
+      className="relative flex w-11/12 items-center justify-between bg-white mx-auto my-3 rounded-2xl p-4"
+    >
       <div className="">
         <h3 className="font-bold text-xl">{`${
           MONTHS[+selectDate?.split(".")[1]]

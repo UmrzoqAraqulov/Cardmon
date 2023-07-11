@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
-const Layout = () => {
-  const [addDebt, setAddDebt] = useState([]);
-
-  const setLocalStorage = (key, info) => {
-    let arr = JSON.parse(localStorage.getItem(key)) || [];
-    arr.push({ ...info, id: uuidv4() });
-    localStorage.setItem(key, JSON.stringify(arr));
-    setAddDebt({arr});
-  };
-
+const Layout = ({ setLocalStorage, handleChange }) => {
   return (
     <div
       className="container  bg-black p-2 rounded-2xl"
@@ -37,7 +27,10 @@ const Layout = () => {
           style={{ boxShadow: "0px -3px 6px -3px gray" }}
           className="absolute bottom-0 right-0 h-16 w-full bg-white px-5 rounded-t-lg rounded-b-xl"
         >
-          <Footer setLocalStorage={setLocalStorage} />
+          <Footer
+            setLocalStorage={setLocalStorage}
+            handleChange={handleChange}
+          />
         </footer>
       </div>
     </div>

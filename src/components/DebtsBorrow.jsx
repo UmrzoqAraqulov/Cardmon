@@ -4,8 +4,8 @@ import image from "../assets/image/lend_default.jpg";
 import DebtsCard from "./DebtsCard";
 import "./add.scss";
 
-const DebtsBorrow = () => {
-  const [debtsArr,setDebtsArr] = useState("");
+const DebtsBorrow = ({ editDateDebts }) => {
+  const [debtsArr, setDebtsArr] = useState("");
   let arr = JSON.parse(localStorage.getItem("borrow")) || [];
   let total = 0;
 
@@ -15,13 +15,13 @@ const DebtsBorrow = () => {
 
   const deleteDebt = (id) => {
     let requestDelete = window.confirm("Do you want to fly this debt");
-    if(requestDelete){
-      let newArr = arr.filter((debt)=>debt.id!==id)
+    if (requestDelete) {
+      let newArr = arr.filter((debt) => debt.id !== id);
       localStorage.setItem("borrow", JSON.stringify(newArr));
-     setDebtsArr({});
+      setDebtsArr({});
     }
-  }
-  
+  };
+
   return (
     <div className="debts w-full">
       <nav className="flex justify-between items-center  px-3">
@@ -69,8 +69,13 @@ const DebtsBorrow = () => {
             <p>Hooray! You have no debt.</p>
           </div>
         ) : (
-          arr.map((debt,index) => (
-            <DebtsCard key={index} deleteDebt= {deleteDebt} {...debt} />
+          arr.map((debt, index) => (
+            <DebtsCard
+              key={index}
+              editDataDebts={editDateDebts}
+              deleteDebt={deleteDebt}
+              {...debt}
+            />
           ))
         )}
       </div>

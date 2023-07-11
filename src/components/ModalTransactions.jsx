@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import {CATEGORIES} from '../data/data'
 
-const ModalDebts = ({ display, openModalDebts,setLocalStorage,openModalTransactions}) => {
+const ModalTransactions = ({ display,setLocalStorage,openModalTransactions}) => {
   const location = useLocation();
   const dateNow = new Date();
 
@@ -141,4 +141,4 @@ const ModalDebts = ({ display, openModalDebts,setLocalStorage,openModalTransacti
   );
 };
 
-export default ModalDebts;
+export default ModalTransactions;
